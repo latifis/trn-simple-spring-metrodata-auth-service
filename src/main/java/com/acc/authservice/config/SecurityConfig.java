@@ -13,19 +13,19 @@ import org.springframework.security.web.SecurityFilterChain;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    private final AuthenticationProvider authenticationProvider;
-
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http
-                .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(req->
-                        req.requestMatchers("/auth/registration","/auth/login")
-                                .permitAll()
-                                .anyRequest()
-                                .authenticated())
-                .authenticationProvider(authenticationProvider)
-                .build();
-    }
+//    private final AuthenticationProvider authenticationProvider;
+//
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        return http
+//                .csrf(AbstractHttpConfigurer::disable)
+//                .authorizeHttpRequests(req->
+//                        req.requestMatchers("/auth/registration","/auth/login")
+//                                .permitAll()
+//                                .anyRequest()
+//                                .authenticated())
+//                .authenticationProvider(authenticationProvider)
+//                .build();
+//    }
 
 }

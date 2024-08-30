@@ -45,13 +45,13 @@ public class AuthService {
         );
     }
 
-    public APIResponse login(AuthenticationRequest authReq) {
-        UsernamePasswordAuthenticationToken authToken =
-                new UsernamePasswordAuthenticationToken(authReq.getEmail(), authReq.getPassword());
-        authenticationManager.authenticate(authToken);
-        UserDetails userDetails = userDetailsService.loadUserByUsername(authToken.getName());
-        return userMapper.mapTokenToApiResponse(
-                jwtService.generateToken(userDetails)
-        );
-    }
+//    public APIResponse login(AuthenticationRequest authReq) {
+//        UsernamePasswordAuthenticationToken authToken =
+//                new UsernamePasswordAuthenticationToken(authReq.getEmail(), authReq.getPassword());
+//        authenticationManager.authenticate(authToken);
+//        UserDetails userDetails = userDetailsService.loadUserByUsername(authToken.getName());
+//        return userMapper.mapTokenToApiResponse(
+//                jwtService.generateToken(userDetails)
+//        );
+//    }
 }
