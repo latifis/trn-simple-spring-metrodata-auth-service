@@ -7,9 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegistrationResponse {
-    private int id;
-    private String firstName;
-    private String lastName;
-    private String name;
+public class RegistrationResponse{
+    private Long id;
+    private String firstname;
+    private String lastname;
+    private String email;
 }
+

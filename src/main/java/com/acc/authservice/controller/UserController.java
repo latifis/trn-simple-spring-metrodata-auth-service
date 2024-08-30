@@ -3,6 +3,7 @@ package com.acc.authservice.controller;
 import com.acc.authservice.model.APIResponse;
 import com.acc.authservice.model.request.AuthenticationRequest;
 import com.acc.authservice.model.request.RegistrationRequest;
+import com.acc.authservice.model.response.RegistrationResponse;
 import com.acc.authservice.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,13 +21,13 @@ public class UserController {
     private final AuthService authService;
 
     @PostMapping("/registration")
-    public ResponseEntity<APIResponse<RegistrationRequest>> register(@RequestBody RegistrationRequest registrationRequest) {
-        return new ResponseEntity<>(authService.registration(registrationRequest), HttpStatus.OK);
+    public ResponseEntity<APIResponse<RegistrationResponse>> registerUser(@RequestBody RegistrationRequest registrationRequest) {
+        return new ResponseEntity<>(authService.register(registrationRequest), HttpStatus.CREATED);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<APIResponse<String>> login(@RequestBody AuthenticationRequest authenticationRequest) {
-        return new ResponseEntity<>(authService.login(authenticationRequest), HttpStatus.OK);
+    public ResponseEntity<APIResponse<String>> login(@RequestBody AuthenticationRequest request) {
+        return new ResponseEntity<>(authService.login(request), HttpStatus.OK);
     }
 
 }

@@ -9,13 +9,13 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 @ControllerAdvice
 public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
+
     @ExceptionHandler(CustomException.class)
-    public ResponseEntity<ErrorMessage> handleCustomException(CustomException customException) {
-        return new ResponseEntity<>(new ErrorMessage()
-                .builder()
-                .error(customException.getError())
-                .message(customException.getMessage())
-                .build(), HttpStatusCode.valueOf(customException.getStatus())
-        );
+    public ResponseEntity<ErrorMessage> handleCustomException(CustomException c) {
+        return new ResponseEntity<>(ErrorMessage.builder()
+                .message(c.getMessage())
+                .error(c.getError())
+                .build(), HttpStatusCode.valueOf(c.getStatus()));
     }
+
 }

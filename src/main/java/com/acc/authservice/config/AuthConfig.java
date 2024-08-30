@@ -21,20 +21,23 @@ public class AuthConfig {
     private final UserRepository userRepository;
 
     @Bean
-    public UserDetailsService userDetailsService(){
+    public UserDetailsService userDetailsService() {
         return email -> new UserDetail(
                 userRepository.findByEmail(email)
-                        .orElseThrow(() -> new UsernameNotFoundException("User not found"))
-        );
+                        .orElseThrow(() -> new CustomException(
+                                String.format("User with email %s not found",email),
+                                "EMAIL_NOT_FOUND",
+                                404
+                        )));
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public AuthenticationProvider authenticationProvider(){
+    public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailsService());
         authProvider.setPasswordEncoder(passwordEncoder());

@@ -16,14 +16,13 @@ public class ObjectValidator<T> {
 
     private final Validator validator;
 
-    public List<String> validate(T objetToValidate){
-        Set<ConstraintViolation<T>> violations = validator.validate(objetToValidate);
-        if(!violations.isEmpty()){
+    public List<String> validate(T objectToValidate) {
+        Set<ConstraintViolation<T>> violations = validator.validate(objectToValidate);
+        if (!violations.isEmpty()) {
             return violations.stream()
                     .map(ConstraintViolation::getMessage)
                     .collect(Collectors.toList());
         }
         return Collections.emptyList();
     }
-
 }
