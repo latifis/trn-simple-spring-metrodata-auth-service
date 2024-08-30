@@ -1,6 +1,7 @@
 package com.acc.authservice.config;
 
 import com.acc.authservice.entity.UserDetail;
+import com.acc.authservice.exception.CustomException;
 import com.acc.authservice.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
